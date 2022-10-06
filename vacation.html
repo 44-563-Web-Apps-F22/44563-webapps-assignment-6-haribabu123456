@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+ <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>vacation</title>
+    <title>Calculation Of Discount</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"   
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
+  integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+ 
+</head>
+<body>
+<div class="container p-1 my-1 bg-secondary text-white">
+    <h1>Darapaneni Haribabu selects a vacation</h1>
+    <h2>Getting input</h2>
+</div>
+
+ 
+<div class="container">
+    <form>
+        <div class="form-group">
+            <input type="checkbox" id="air" name="vacation" value="true">
+            <label for="air">Travel by Air</label> <br>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="domestic" name="vacation" value="true">
+            <label for="domestic">Domestic</label> <br>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="resort" name="vacation" value="false">
+            <label for="resort">Resort</label> <br>
+        </div>
+        <input type="button" class="btn btn-light" value="Select a vacation" onclick="selectVacation()">
+    </form>
+    <p id="results">This text will be replaced </p>
+    <br>
+
+    <form>
+        <div class="form-group">
+            <label for="city">Enter a city</label>
+            <input type="text" class="form-control" id="city" name="city" value="city"> <br>
+        </div>
+        <div class="form-group">
+            <label for="city">Enter price</label>
+            <input type="text" class="form-control" id="price" name="price"> <br>
+        </div>
+        <input type="button" class="btn btn-warning" value="Update the vacation" onclick="updateVacation()">
+    </form>
+    <p id="results2">This text will be replaced </p>
+</div>
+<script>
+    var my_vacation = {};
+    function selectVacation() {
+        my_vacation = {};
+        let airtravel = document.getElementById("air").checked
+        let domestictravel = document.getElementById("domestic").checked
+        let resorttravel = document.getElementById("resort").checked
+        if (airtravel) {
+            my_vacation.air = true;
+        }
+        else {
+            my_vacation.air = false;
+        }
+        if (domestictravel) {
+            my_vacation.domestic = true;
+        }
+        else {
+            my_vacation.domestic = false;
+        }
+        if (resorttravel) {
+            my_vacation.resort = true;
+        }
+        else {
+            my_vacation.resort = false;
+        }
+        document.getElementById("results").innerHTML = JSON.stringify(my_vacation)
+    }
+    function updateVacation()
+    {
+        let city=document.getElementById("city").value;
+        let price=document.getElementById("price").value;
+        my_vacation["city"]=city;
+        my_vacation["price"]=price;
+    
+        document.getElementById("results2").innerHTML=JSON.stringify(my_vacation)
+    }
+</script>
+
+
+
+</body></html>
